@@ -64,6 +64,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 
+	-- tabnine autocompletion
+	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
+
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
@@ -106,6 +109,7 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use("tpope/vim-fugitive")
 
 	-- Java jdtls
 	use("mfussenegger/nvim-jdtls")
