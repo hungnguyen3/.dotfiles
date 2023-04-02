@@ -7,11 +7,12 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
--- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>")
-
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
+
+-- replace search highlight
+keymap.set("n", "<leader>r", ":%s///g<left><left>")
+keymap.set("n", "<leader>rc", ":%s///gc<left><left><left>")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
@@ -30,6 +31,9 @@ keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+
+-- buffer management
+keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { noremap = true, silent = true })
 
 ----------------------
 -- Plugin Keybinds

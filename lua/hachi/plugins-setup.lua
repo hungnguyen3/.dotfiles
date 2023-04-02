@@ -33,7 +33,7 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("bluz71/vim-nightfly-colors") -- preferred colorscheme
+	use("Mofiqul/vscode.nvim") -- preferred colorscheme
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
@@ -64,9 +64,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 
-	-- tabnine autocompletion
-	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
-
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
@@ -89,6 +86,7 @@ return packer.startup(function(use)
 	}) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	use("github/copilot.vim") -- github copilot
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -113,6 +111,9 @@ return packer.startup(function(use)
 
 	-- Java jdtls
 	use("mfussenegger/nvim-jdtls")
+
+	-- buffer line
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	if packer_bootstrap then
 		require("packer").sync()
