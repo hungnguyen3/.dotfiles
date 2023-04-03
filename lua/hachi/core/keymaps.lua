@@ -60,3 +60,18 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- move highlighted text
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move highlighted text down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move highlighted text up
+
+-- allow half page jumpings but cursor stays in the middle of the screen
+keymap.set("n", "<C-d>", "<C-d>zzzv")
+keymap.set("n", "<C-u>", "<C-u>zzzv")
+
+-- allow search term to stay in the middle of the screen
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
+
+-- map ctrl c to escape
+keymap.set("i", "<C-c>", "<Esc>")
