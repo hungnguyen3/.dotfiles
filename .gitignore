@@ -1,4 +1,5 @@
 # ignore compiled code for packer plugin
 plugin/
-
 *.json
+
+.DS_Store

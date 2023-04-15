@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Check if a directory is provided as an argument
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # If no argument is provided, use FZF to find and select a directory
+    selected=$(find ~/Desktop ~/Coding ~/.config/ -mindepth 1 -maxdepth 2 -type d | fzf)
+fi
+
+# Exit the script if no directory was selected
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+# Get the base name of the selected directory and replace dots with underscores
+selected_name=$(basename "$selected" | tr . _)
+
+# Create a new detached Tmux session with the selected directory as the working directory
+# if a session with the same name does not exist
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+# If the script is running inside a Tmux session, switch to the selected session
+if [[ -n $TMUX ]]; then
+    tmux switchc -t $selected_name
+# If the script is not running inside a Tmux session, attach to the selected session
+else
+    tmux attach -t $selected_name
+fi
