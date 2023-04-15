@@ -113,8 +113,12 @@ source $ZSH/oh-my-zsh.sh
 # alias vim to nvim
 alias vim="nvim"
 
-# mvn downloaded by intelj
-export M2_HOME=/users/hachicoding/apache-maven-3.8.7/
-export SCRIPTS=/users/hachicoding/.config/scripts
-export PATH=${M2_HOME}/bin:${SCRIPTS}:${PATH} 
-export PATH
+export SCRIPTS=$HOME/.config/scripts
+export PATH=${SCRIPTS}:${PATH}
+
+# only execute on MacOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export M2_HOME=$HOME/apache-maven-3.8.7/
+  export PATH=${M2_HOME}/bin:${PATH} 
+fi
+
