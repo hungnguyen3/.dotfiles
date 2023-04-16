@@ -1,15 +1,15 @@
 cd ~
 
 # .config symlinks
-ln -s $HOME/.dotfiles/.config/nvim $HOME/.config
-ln -s $HOME/.dotfiles/.config/scripts $HOME/.config
+ln -sf $HOME/.dotfiles/.config/nvim $HOME/.config
+ln -sf $HOME/.dotfiles/.config/scripts $HOME/.config
 
 # .config scripts
 chmod +x $HOME/.config/scripts/tmux-sessionizer
 
 # HOME symlinks
-ln -s $HOME/.dotfiles/.tmux.conf $HOME
-ln -s $HOME/.dotfiles/.zshrc $HOME
+ln -sf $HOME/.dotfiles/.tmux.conf $HOME
+ln -sf $HOME/.dotfiles/.zshrc $HOME
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "This is macOS."

@@ -5,7 +5,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     # If no argument is provided, use FZF to find and select a directory
-    selected=$(find ~/Desktop ~/Coding ~/.config/ -mindepth 1 -maxdepth 2 -type d | fzf)
+    selected=$(find ~/Desktop ~/Coding ~/.config ~/.dotfiles -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
 # Exit the script if no directory was selected
