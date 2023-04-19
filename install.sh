@@ -17,13 +17,30 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "This is Linux."
   
-  # Java environment set up
   sudo apt update
   sudo apt upgrade
+
+  # download node & npm
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+  source ~/.zshrc
+  nvm install --lts
+  nvm alias default 'lts/*'
+  node --version
+  sudo apt install npm
+
+  # tmux setup
   sudo apt-get install tmux
   sudo apt-get install fzf
+
+  # Java environment setup
   sudo apt-get install openjdk-17-jdk
   sudo apt install maven -y
+
+  # clipboard integration
+  sudo apt-get install xclip xsel
+
+  # ripgrep
+  sudo apt-get install ripgrep
 else
   echo "Unknown operating system."
 fi
