@@ -20,9 +20,9 @@ null_ls.setup({
 		--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
 		formatting.prettier, -- js/ts formatter
 		formatting.stylua, -- lua formatter
-		formatting.google_java_format, -- Java formatter
 		diagnostics.alex, -- linter for writing inclusive language
-		diagnostics.eslint_d.with({ -- js/ts linter
+		diagnostics.eslint_d.with({
+			-- js/ts linter
 			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
@@ -38,13 +38,17 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({
-						filter = function(client)
-							--  only use null-ls for formatting instead of lsp server
-							return client.name == "null-ls"
-						end,
-						bufnr = bufnr,
-					})
+					if vim.bo.filetype == "java" then
+						vim.lsp.buf.format(nil, 1000)
+					else
+						vim.lsp.buf.format({
+							filter = function(client)
+								--  only use null-ls for formatting instead of lsp server
+								return client.name == "null-ls"
+							end,
+							bufnr = bufnr,
+						})
+					end
 				end,
 			})
 		end

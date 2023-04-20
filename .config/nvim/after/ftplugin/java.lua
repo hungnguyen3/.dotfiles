@@ -82,6 +82,13 @@ local config = {
 			references = {
 				includeDecompiledSources = true,
 			},
+			format = {
+				enabled = true,
+				settings = {
+					url = vim.fn.stdpath("config") .. "/lang-servers/intellij-java-google-style.xml",
+					profile = "GoogleStyle",
+				},
+			},
 		},
 		signatureHelp = { enabled = true },
 		completion = {
@@ -121,9 +128,9 @@ local config = {
 	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
 	--
 	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
-	-- init_options = {
-	-- 	bundles = {},
-	-- },
+	init_options = {
+		bundles = {},
+	},
 }
 
 -- configure jdtls server
