@@ -6,6 +6,7 @@ end
 
 -- Installation location of jdtls by nvim-mason
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
+local LOMBOK_LOCATION = JDTLS_LOCATION .. "/lombok.jar"
 
 -- Data directory - change it to your liking
 local HOME = os.getenv("HOME")
@@ -30,8 +31,6 @@ end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-vim.notify("STARTING JAVA LSP SERVER!")
-
 vim.bo.shiftwidth = 2
 vim.bo.tabstop = 2
 
@@ -43,6 +42,7 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
+		"-javaagent:" .. LOMBOK_LOCATION,
 		"-Xms1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",

@@ -6,6 +6,7 @@ ln -sf $HOME/.dotfiles/.config/scripts $HOME/.config
 
 # .config scripts
 chmod +x $HOME/.config/scripts/tmux-sessionizer
+chmod +x $HOME/.config/scripts/tmux-startup
 
 # HOME symlinks
 ln -sf $HOME/.dotfiles/.tmux.conf $HOME
@@ -55,4 +56,9 @@ else
     echo "TPM directory already exists. Skipping clone."
 fi
 
+# Reload .tmux.conf
+tmux source-file ~/.tmux.conf 
+$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+# Reload .zshrc
 source ~/.zshrc

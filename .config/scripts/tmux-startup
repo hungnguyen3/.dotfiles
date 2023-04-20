@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Start a Tmux session with the name "home" and attach to it
+if ! tmux has-session -t home 2> /dev/null; then
+    tmux new-session -ds home -c $HOME
+fi
+tmux attach -t home

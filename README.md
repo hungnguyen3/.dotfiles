@@ -10,5 +10,5 @@ source install.sh
 
 # reload & rebuild .tmux.config
 <Ctrl-a> r
-<Ctrl-a> i
+<Ctrl-a> I
 ```
