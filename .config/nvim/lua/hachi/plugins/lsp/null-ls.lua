@@ -41,17 +41,13 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					if vim.bo.filetype == "java" then
-						vim.lsp.buf.format(nil, 1000)
-					else
-						vim.lsp.buf.format({
-							filter = function(client)
-								--  only use null-ls for formatting instead of lsp server
-								return client.name == "null-ls"
-							end,
-							bufnr = bufnr,
-						})
-					end
+					vim.lsp.buf.format({
+						filter = function(client)
+							--  only use null-ls for formatting instead of lsp server
+							return client.name == "null-ls"
+						end,
+						bufnr = bufnr,
+					})
 				end,
 			})
 		end

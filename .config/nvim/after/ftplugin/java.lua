@@ -4,6 +4,15 @@ if not jdtls_ok then
 	return
 end
 
+local lspconf_ok, lspconf = pcall(require, "hachi.plugins.lsp.lspconf")
+if not lspconf_ok then
+	vim.notify("Failed to import lspconf.lua")
+	return
+end
+
+local on_attach = lspconf.on_attach
+local capabilities = lspconf.capabilities()
+
 -- Installation location of jdtls by nvim-mason
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
 local LOMBOK_LOCATION = JDTLS_LOCATION .. "/lombok.jar"
@@ -31,8 +40,19 @@ end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-vim.bo.shiftwidth = 2
-vim.bo.tabstop = 2
+vim.bo.shiftwidth = 4
+vim.bo.tabstop = 4
+
+-- Add an autocmd for Java formatting
+vim.api.nvim_exec(
+	[[
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePre *.java lua vim.lsp.buf.format(nil, 1000)
+  augroup END
+]],
+	true
+)
 
 local config = {
 	cmd = {
@@ -134,7 +154,7 @@ local config = {
 }
 
 -- configure jdtls server
-config["on_attach"] = require("hachi.plugins.lsp.lspconf").on_attach
-config["capabilities"] = require("hachi.plugins.lsp.lspconf").capabilities()
+config["on_attach"] = on_attach
+config["capabilities"] = capabilities
 jdtls.start_or_attach(config)
 require("jdtls.setup").add_commands()
