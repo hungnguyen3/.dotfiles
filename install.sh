@@ -11,6 +11,7 @@ chmod +x $HOME/.config/scripts/tmux-startup
 # HOME symlinks
 ln -sf $HOME/.dotfiles/.tmux.conf $HOME
 ln -sf $HOME/.dotfiles/.zshrc $HOME
+ln -sf $HOME/.dotfiles/.ideavimrc $HOME
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "This is macOS."
@@ -30,18 +31,24 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   sudo apt install npm
 
   # tmux setup
-  sudo apt-get install tmux
-  sudo apt-get install fzf
+  sudo apt install tmux
+  sudo apt install fzf
 
   # Java environment setup
-  sudo apt-get install openjdk-17-jdk
+  sudo apt install openjdk-17-jdk
   sudo apt install maven -y
 
   # clipboard integration
-  sudo apt-get install xclip xsel
+  sudo apt install xclip xsel
 
   # ripgrep
-  sudo apt-get install ripgrep
+  sudo apt install ripgrep
+
+  # lazygit
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+  tar xf lazygit.tar.gz lazygit
+  sudo install lazygit /usr/local/bin
 else
   echo "Unknown operating system."
 fi

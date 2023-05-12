@@ -1,5 +1,6 @@
 -- import null-ls plugin safely
 local setup, null_ls = pcall(require, "null-ls")
+
 if not setup then
 	return
 end
@@ -18,7 +19,9 @@ null_ls.setup({
 	sources = {
 		--  to disable file types use
 		--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
-		formatting.prettier, -- js/ts formatter
+		formatting.prettier.with({
+			extra_args = { "--tab-width", "4", "--single-quote", "--use-tabs", "--print-width", "120" },
+		}),
 		formatting.stylua, -- lua formatter
 		diagnostics.alex, -- linter for writing inclusive language
 		diagnostics.eslint_d.with({
