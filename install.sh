@@ -16,6 +16,34 @@ ln -sf $HOME/.dotfiles/.ideavimrc $HOME
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "This is macOS."
 
+  # install brew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # install neovim
+  brew install neovim
+
+  # install tmux
+  brew install tmux
+  brew install fzf
+  tmux -V
+
+  # install ripgrep
+  brew install ripgrep
+
+  # install yabai and skhd
+  brew install koekeishiya/formulae/yabai
+  brew install koekeishiya/formulae/skhd
+
+  # yabai
+  ln -sf $HOME/.dotfiles/.config/yabai $HOME/.config
+  yabai --start-service
+  yabai --restart-service
+
+  # skhd
+  ln -sf $HOME/.dotfiles/.config/skhd $HOME/.config
+  skhd --start-service
+  skhd --restart-service
+
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "This is Linux."
   
@@ -69,3 +97,5 @@ $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Reload .zshrc
 source ~/.zshrc
+
+cd .dotfiles

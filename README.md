@@ -11,4 +11,8 @@ source install.sh
 # reload & rebuild .tmux.config
 <Ctrl-a> r
 <Ctrl-a> I
+
+# restart yabai & skhd (Mac only)
+yabai --restart-service
+skhd --restart-service
 ```
