@@ -112,6 +112,9 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- vim helm
+	use({ "towolf/vim-helm" })
+
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags

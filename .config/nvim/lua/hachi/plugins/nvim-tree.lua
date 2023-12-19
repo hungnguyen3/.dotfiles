@@ -19,6 +19,10 @@ vim.cmd("highlight NvimTreeCursorLine guibg=#4a545e guifg=NONE")
 
 -- configure nvim-tree
 nvimtree.setup({
+	view = {
+		side = "right",
+		width = "500",
+	},
 	-- change folder arrow icons
 	renderer = {
 		icons = {
@@ -35,11 +39,15 @@ nvimtree.setup({
 	-- window splits
 	actions = {
 		open_file = {
+			quit_on_open = true,
 			window_picker = {
 				enable = false,
 			},
 			resize_window = false,
 		},
+	},
+	update_focused_file = {
+		enable = true,
 	},
 })
 
