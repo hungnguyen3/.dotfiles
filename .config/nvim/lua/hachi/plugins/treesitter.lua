@@ -9,6 +9,7 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
+		additional_vim_regex_highlighting = false,
 	},
 	-- enable indentation
 	indent = { enable = true },
@@ -34,6 +35,7 @@ treesitter.setup({
 		"dockerfile",
 		"gitignore",
 		"yaml",
+		"python",
 	},
 	-- auto install above language parsers
 	auto_install = true,
