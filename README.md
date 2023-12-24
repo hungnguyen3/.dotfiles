@@ -16,3 +16,15 @@ source install.sh
 yabai --restart-service
 skhd --restart-service
 ```
+
+# Catppuccin iterm colors
+```bash
+git clone https://github.com/catppuccin/iterm
+```
+- Launch iTerm
+- Press CMD+i (⌘+i)
+- Navigate to the Colors tab
+- Click on Color Presets
+- Click on Import
+- Navigate to the `./dotfiles/iterm/colors/` directory where the color files are located, and select the files.
+- Click on Color Presets and choose the Catppuccin flavour
