@@ -23,6 +23,7 @@ null_ls.setup({
 		--		extra_args = { "--tab-width", "2", "--use-tabs", "--print-width", "120" },
 		--	}),
 		formatting.stylua, -- lua formatter
+		-- formatting.black, -- python formatter
 		diagnostics.alex, -- linter for writing inclusive language
 		diagnostics.eslint_d.with({
 			-- js/ts linter
@@ -31,6 +32,8 @@ null_ls.setup({
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 			end,
 		}),
+		diagnostics.mypy, -- linter for python
+		diagnostics.ruff, -- linter for python
 		completion.spell, -- spell checker
 	},
 	-- configure format on save

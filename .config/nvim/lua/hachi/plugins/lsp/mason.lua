@@ -30,6 +30,7 @@ mason_lspconfig.setup({
 		"emmet_ls",
 		"jdtls",
 		"marksman",
+		"pyright",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -42,6 +43,9 @@ mason_null_ls.setup({
 		"stylua", -- lua formatter
 		"eslint_d", -- ts/js linter
 		"alex", -- markdown linter
+		"ruff", -- python linter
+		"mypy", -- python linter
+		"black", -- python formatter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,
