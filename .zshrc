@@ -134,3 +134,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # Added by Amplify CLI binary installer
 export PATH="$HOME/.amplify/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Add PATH for Go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/go/bin

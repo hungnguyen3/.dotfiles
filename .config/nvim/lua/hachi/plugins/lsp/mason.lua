@@ -31,6 +31,7 @@ mason_lspconfig.setup({
 		"jdtls",
 		"marksman",
 		"pyright",
+		"ruby_ls",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -46,6 +47,7 @@ mason_null_ls.setup({
 		"ruff", -- python linter
 		"mypy", -- python linter
 		"black", -- python formatter
+		"rubocop", -- ruby formatter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

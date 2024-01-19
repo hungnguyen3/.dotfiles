@@ -23,6 +23,7 @@ null_ls.setup({
 		--		extra_args = { "--tab-width", "2", "--use-tabs", "--print-width", "120" },
 		--	}),
 		formatting.stylua, -- lua formatter
+		formatting.rubocop, -- ruby formatter
 		-- formatting.black, -- python formatter
 		diagnostics.alex, -- linter for writing inclusive language
 		diagnostics.eslint_d.with({
@@ -34,6 +35,7 @@ null_ls.setup({
 		}),
 		diagnostics.mypy, -- linter for python
 		diagnostics.ruff, -- linter for python
+		diagnostics.rubocop, -- linter for ruby
 		completion.spell, -- spell checker
 	},
 	-- configure format on save
