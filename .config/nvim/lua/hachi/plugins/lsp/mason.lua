@@ -32,6 +32,7 @@ mason_lspconfig.setup({
 		"marksman",
 		"pyright",
 		"ruby_ls",
+		"gopls",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -48,6 +49,10 @@ mason_null_ls.setup({
 		"mypy", -- python linter
 		"black", -- python formatter
 		"rubocop", -- ruby formatter
+		"gofmt", -- go formatter
+		"golines", -- go lines
+		"goimports", -- go imports
+		"golangci_lint", -- go linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

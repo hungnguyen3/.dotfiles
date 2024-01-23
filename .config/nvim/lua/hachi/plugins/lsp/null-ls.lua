@@ -24,6 +24,9 @@ null_ls.setup({
 		--	}),
 		formatting.stylua, -- lua formatter
 		formatting.rubocop, -- ruby formatter
+		formatting.gofmt, -- go formatter
+		formatting.goimports, -- go import formatter
+		formatting.golines, -- go lines formatter
 		-- formatting.black, -- python formatter
 		diagnostics.alex, -- linter for writing inclusive language
 		diagnostics.eslint_d.with({
@@ -36,6 +39,7 @@ null_ls.setup({
 		diagnostics.mypy, -- linter for python
 		diagnostics.ruff, -- linter for python
 		diagnostics.rubocop, -- linter for ruby
+		diagnostics.golangci_lint, -- linter for go
 		completion.spell, -- spell checker
 	},
 	-- configure format on save

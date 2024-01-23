@@ -4,6 +4,11 @@ if not lspconfig_status then
 	return
 end
 
+local lspconfig_util_status, lspconfig_util = pcall(require, "lspconfig/util")
+if not lspconfig_util_status then
+	return
+end
+
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
@@ -114,6 +119,24 @@ lspconfig["pyright"].setup({
 lspconfig["ruby_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+})
+
+-- configure go server
+lspconfig["gopls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+	root_dir = lspconfig_util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
 })
 
 -- configure lua server (with special settings)
