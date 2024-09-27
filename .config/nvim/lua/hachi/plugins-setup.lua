@@ -126,9 +126,6 @@ return packer.startup(function(use)
 	-- Java jdtls
 	use("mfussenegger/nvim-jdtls")
 
-	-- buffer line
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
-
 	-- harpoon
 	use("ThePrimeagen/harpoon")
 

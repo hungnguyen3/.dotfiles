@@ -45,7 +45,7 @@ function general_lsp_config.on_attach(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
-	if client.name == "tsserver" then
+	if client.name == "ts_ls" then
 		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
 		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
@@ -115,29 +115,29 @@ lspconfig["pyright"].setup({
 	filetypes = { "python" },
 })
 
--- configure python server
-lspconfig["ruby_ls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- configure ruby server, turn on after installing go
+-- lspconfig["ruby_ls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
--- configure go server
-lspconfig["gopls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_dir = lspconfig_util.root_pattern("go.work", "go.mod", ".git"),
-	settings = {
-		gopls = {
-			completeUnimported = true,
-			usePlaceholders = true,
-			analyses = {
-				unusedparams = true,
-			},
-		},
-	},
-})
+-- configure go server, turn on after installing go
+-- lspconfig["gopls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- 	cmd = { "gopls" },
+-- 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+-- 	root_dir = lspconfig_util.root_pattern("go.work", "go.mod", ".git"),
+-- 	settings = {
+-- 		gopls = {
+-- 			completeUnimported = true,
+-- 			usePlaceholders = true,
+-- 			analyses = {
+-- 				unusedparams = true,
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({

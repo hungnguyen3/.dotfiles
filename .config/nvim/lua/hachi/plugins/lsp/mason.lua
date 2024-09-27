@@ -22,7 +22,7 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"tsserver",
+		"ts_ls",
 		"html",
 		"cssls",
 		"tailwindcss",
@@ -31,8 +31,9 @@ mason_lspconfig.setup({
 		"jdtls",
 		"marksman",
 		"pyright",
-		"ruby_ls",
-		"gopls",
+		-- turn these on after installing ruby and go
+		-- "ruby_ls",
+		-- "gopls",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -48,11 +49,13 @@ mason_null_ls.setup({
 		"ruff", -- python linter
 		"mypy", -- python linter
 		"black", -- python formatter
-		"rubocop", -- ruby formatter
-		"gofmt", -- go formatter
-		"golines", -- go lines
-		"goimports", -- go imports
-		"golangci_lint", -- go linter
+		-- turn this on after you install ruby
+		-- "rubocop", -- ruby formatter
+		-- turn these on after you install go
+		-- "gofmt", -- go formatter
+		-- "golines", -- go lines
+		-- "goimports", -- go imports
+		-- "golangci_lint", -- go linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

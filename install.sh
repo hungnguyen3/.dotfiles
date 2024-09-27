@@ -19,6 +19,26 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # install brew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+  # installs nvm (Node Version Manager)
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+  # download and install Node.js (you may need to restart the terminal)
+  nvm install 20
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+  # verifies the right Node.js version is in the environment
+  node -v # should print `v20.17.0`
+
+  # verifies the right npm version is in the environment
+  npm -v # should print `10.8.2`
+
+  # install ruby
+  brew install rbenv
+  rbenv install -l
+
   # install neovim
   brew install neovim
 
